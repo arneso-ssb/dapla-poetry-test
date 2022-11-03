@@ -1,0 +1,3 @@
+# Keep virtual environment in project directory. Needed on Dapla to avoid recreating environment.
+[virtualenvs]
+in-project = true

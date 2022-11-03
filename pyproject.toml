@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "dapla-poetry-test"
+version = "0.1.0"
+description = "Testrepo for making a pyproject.toml that matches main packages on Dapla."
+authors = ["Arne Sørli <81353974+arneso-ssb@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+dapla-toolbelt = "^1.3.4"
+jupyterlab = "^3.5.0"
+numpy = "^1.22.4"
+pandas = "^1.5.1"
+pyspark = "==3.2.1"         # Pin to the version used on Dapla
+pyarrow = "^9.0.0"          # Needed because dapl-toolbelt does not work with pyarroow 10.x
+
+[tool.poetry.group.dev.dependencies]
+black = {extras = ["jupyter"], version = "^22.10.0"}
+isort = "^5.10.1"
+#mypy = "^0.982"
+#nbstripout = "^0.6.1"
+#pandas-stubs = "^1.5.1.221024"
+#pytest = "^7.2.0"
+#pytest-cov = "^4.0.0"
+#pytest-mock = "^3.10.0"
+#sphinx = "^5.3.0"
+#sphinx-autodoc-defaultargs = "^0.1.2"
+#sphinx-rtd-theme = "^1.0.0"
+#tabulate = "^0.9.0"
+#types-python-dateutil = "^2.8.19.2"
+#types-tabulate = "^0.9.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+skip_gitignore = true
+
+[tool.mypy]
+check_untyped_defs = true
+no_implicit_optional = true
+show_error_codes = true
+warn_return_any = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = [
+    "dapla.*",
+]
+ignore_missing_imports = true
